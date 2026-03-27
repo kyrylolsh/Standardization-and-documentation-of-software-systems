@@ -1,0 +1,309 @@
+#startPageDiv {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#startPageDiv::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px, 80px 80px, 30px 30px;
+}
+
+.start-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.floating-mole-start {
+    position: absolute;
+    font-size: 4rem;
+    opacity: 0.15;
+    animation: floatStart 20s infinite linear;
+}
+
+.floating-mole-start:nth-child(1) {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-mole-start:nth-child(2) {
+    top: 65%;
+    right: 15%;
+    animation-delay: 7s;
+}
+
+.floating-mole-start:nth-child(3) {
+    bottom: 25%;
+    left: 20%;
+    animation-delay: 14s;
+}
+
+.floating-hole-start {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.1;
+    animation: floatHole 25s infinite linear;
+}
+
+.floating-hole-start:nth-child(4) {
+    top: 25%;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+.floating-hole-start:nth-child(5) {
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 10s;
+}
+
+@keyframes floatStart {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, 80px) rotate(90deg);
+    }
+    50% {
+        transform: translate(50px, 150px) rotate(180deg);
+    }
+    75% {
+        transform: translate(-80px, 100px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes floatHole {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    33% {
+        transform: translate(-120px, 60px) rotate(120deg) scale(1.1);
+    }
+    66% {
+        transform: translate(80px, -80px) rotate(240deg) scale(0.9);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg) scale(1);
+    }
+}
+
+#startPageDiv h1 {
+    font-size: 4.5rem;
+    color: white;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FF8C00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 2;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3),
+                     0 0 20px rgba(255, 215, 0, 0.4);
+    }
+    to {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3),
+                     0 0 30px rgba(255, 215, 0, 0.8),
+                     0 0 40px rgba(255, 165, 0, 0.6);
+    }
+}
+
+.start-page-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.start-page-buttons button {
+    min-width: 250px;
+    padding: 1.2rem 3rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    text-transform: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.start-page-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.start-page-buttons button:hover::before {
+    left: 100%;
+}
+
+.start-page-buttons button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.current-settings {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 3px solid #FFD700;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+    max-width: 400px;
+    animation: settingsAppear 0.6s ease-out;
+}
+
+@keyframes settingsAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.current-settings h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.current-settings p {
+    color: #555;
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.current-settings p:last-child {
+    margin-bottom: 0;
+}
+
+.game-title-decoration {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    #startPageDiv {
+        padding: 1rem;
+    }
+
+    #startPageDiv h1 {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .start-page-buttons {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .start-page-buttons button {
+        min-width: 220px;
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+    }
+
+    .current-settings {
+        padding: 1.5rem;
+        max-width: 350px;
+    }
+
+    .floating-mole-start {
+        font-size: 3rem;
+    }
+
+    .floating-hole-start {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #startPageDiv h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .start-page-buttons button {
+        min-width: 200px;
+        padding: 0.9rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .current-settings {
+        padding: 1.2rem;
+        max-width: 300px;
+    }
+
+    .current-settings h3 {
+        font-size: 1.3rem;
+    }
+
+    .current-settings p {
+        font-size: 1rem;
+    }
+
+    .floating-mole-start {
+        font-size: 2.5rem;
+    }
+
+    .floating-hole-start {
+        font-size: 2rem;
+    }
+
+}

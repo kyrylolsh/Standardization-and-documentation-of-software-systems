@@ -1,0 +1,22 @@
+.Button {
+    background-color: var(--btn-color, #4caf50);
+    color: white;
+    padding: 15px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.Button:hover {
+    background-color: var(--btn-hover-color, #45a049);
+    transform: scale(1.05);
+}
+
+:root {
+    --btn-color: #4caf50;
+    --btn-hover-color: #45a049;
+}
