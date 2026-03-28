@@ -1,4 +1,5 @@
-ximport React, { useState } from "react";
+import React, { useState } from "react";
+import CookieConsent from "react-cookie-consent";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 import StartPage from "./Pages/StartPage";
@@ -23,37 +24,60 @@ function App() {
   };
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <StartPage
-            onStart={() => navigate("/game")}
-          />
-        }
-      />
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <StartPage
+              onStart={() => navigate("/game")}
+            />
+          }
+        />
 
-      <Route
-        path="/game"
-        element={
-          <GamePage
-            onFinish={handleGameFinish}
-          />
-        }
-      />
+        <Route
+          path="/game"
+          element={
+            <GamePage
+              onFinish={handleGameFinish}
+            />
+          }
+        />
 
-      <Route
-        path="/result"
-        element={
-          <ResultPage
-            score={gameResult.score}
-            timeLeft={gameResult.timeLeft}
-            onRestart={() => navigate("/game")}
-            onNewGame={() => navigate("/")}
-          />
-        }
-      />
-    </Routes>
+        <Route
+          path="/result"
+          element={
+            <ResultPage
+              score={gameResult.score}
+              timeLeft={gameResult.timeLeft}
+              onRestart={() => navigate("/game")}
+              onNewGame={() => navigate("/")}
+            />
+          }
+        />
+      </Routes>
+
+      <CookieConsent
+        location="bottom"
+        buttonText="Прийняти"
+        cookieName="whackAMoleConsent"
+        style={{ background: "#2B373B", fontSize: "14px" }}
+        buttonStyle={{
+          color: "#4e503b",
+          fontSize: "13px",
+          background: "#f1d600",
+          borderRadius: "5px",
+          padding: "10px 20px"
+        }}
+        expires={150}
+      >
+        Цей сайт використовує файли cookie для покращення ігрового досвіду згідно з вимогами GDPR.
+        Продовжуючи гру, ви погоджуєтеся з нашою{" "}
+        <a href="/PRIVACY_POLICY.md" style={{ color: "#f1d600" }}>
+          політикою конфіденційності
+        </a>.
+      </CookieConsent>
+    </>
   );
 }
 
